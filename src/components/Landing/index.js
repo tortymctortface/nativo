@@ -1,3 +1,4 @@
+//Landing
 import React from 'react';
 
 import TopBar from '../TopBar/top-bar';
@@ -5,6 +6,8 @@ import TopBar from '../TopBar/top-bar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { PasswordForgetLink } from '../PasswordForget';
+import { SignUpLink } from '../SignUp';
 
 const Landing = () => (
   <div>
@@ -33,11 +36,12 @@ const Landing = () => (
 
         <div class="text-center">
           <div class="d-inline-block m-1">    
-            <Button variant="warning" as="input" type="submit" value="Sign Up"></Button>
+            <Button variant="warning" as="input" type="submit" value="Login"></Button>
           </div>
 
-          <div class="d-inline-block m-1">
-            <Button variant="outline-warning" as="input" type="submit" value="Log In"></Button>
+          <div action class="d-inline-block m-1">
+     		   <SignUpLink />
+ <PasswordForgetLink />
           </div>
         </div>
     </Form>
