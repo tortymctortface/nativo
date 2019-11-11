@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import TopBar from '../TopBar/top-bar';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+
+const INITIAL_STATE = {
+  email: '',
+  password: ''
+};
 
 const Landing = () => (
   <div>
@@ -16,11 +22,33 @@ const Landing = () => (
 
     <br />
 
-    <div class="w-50 mx-auto">
+    <LandingForm />
+  </div>
+);
+
+class LandingForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { ...INITIAL_STATE };
+  }
+
+  onChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
+  render() {
+    return (
+      <div class="w-50 mx-auto">
       <Form>
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" class="w-50"/>
+          <Form.Control 
+            type="text"
+            placeholder="Email"
+            name="email"
+            onChange={this.onChange}
+            class="w-50"
+            />
           <Form.Text className="text-muted">
             We'll never share your email with anyone else.
           </Form.Text>
@@ -28,12 +56,25 @@ const Landing = () => (
 
         <Form.Group controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password"/>
+          <Form.Control 
+            type="password"
+            placeholder="Password"
+            name="password"
+            onChange={this.onChange}
+            class="w-50"
+          />
         </Form.Group>
 
         <div class="text-center">
           <div class="d-inline-block m-1">    
-            <Button variant="warning" as="input" type="submit" value="Sign Up"></Button>
+            <Link to={{
+              pathname: '/signup',
+              state: {
+                email: this.state.email,
+              }
+            }}>
+              <Button variant="warning" as="input" type="submit" value="Sign Up"></Button>
+            </Link>
           </div>
 
           <div class="d-inline-block m-1">
@@ -42,6 +83,8 @@ const Landing = () => (
         </div>
     </Form>
     </div>
-  </div>
-);
+    );
+  }
+}
+
 export default Landing;

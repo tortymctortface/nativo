@@ -22,8 +22,8 @@ const INITIAL_STATE = {
 class SignUpFormBase extends Component {
   constructor(props) {
     super(props);
-
     this.state = {...INITIAL_STATE};
+    this.state.email = this.props.location.state.email;
   }
   onSubmit = event => {
     const { username, email, passwordOne } = this.state;
