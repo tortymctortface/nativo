@@ -1,7 +1,6 @@
 //Sign up page
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import Popup from "reactjs-popup"
 import * as ROUTES from '../../constants/routes';
 import { withFirebase } from '../Firebase'; 
 import { compose } from 'recompose';
