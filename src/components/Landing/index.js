@@ -16,7 +16,8 @@ import * as ROUTES from '../../constants/routes';
 
 const INITIAL_STATE = {
   email: '',
-  password: ''
+  password: '',
+  error: null
 };
 
 const Landing = () => (
@@ -41,7 +42,10 @@ class LandingFormBase extends Component {
 
   onLogIn = event => {
     const { email, password } = this.state;
-    this.props.firebase
+    if(email == "" || password == "") {
+      alert("Please ensure you have entered your email and password");
+    } else {
+      this.props.firebase
       .doSignInWithEmailAndPassword(email, password)
       .then(() => {
         this.setState({ ...INITIAL_STATE });
@@ -50,7 +54,7 @@ class LandingFormBase extends Component {
       .catch(error => {
         this.setState({ error });
       });
-    event.preventDefault();
+    }
   };
 
   onChange = event => {
@@ -58,6 +62,7 @@ class LandingFormBase extends Component {
   };
 
   render() {
+    const error = this.state.error;
     return (
       <div class="w-50 mx-auto">
       <Form>
@@ -105,6 +110,7 @@ class LandingFormBase extends Component {
     </Form>
 
     <div class="w-50 mx-auto text-center">
+      {error && <p>{error.message}</p>}
       <PasswordForgetLink />
     </div>
     </div>
