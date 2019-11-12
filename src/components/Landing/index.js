@@ -65,54 +65,54 @@ class LandingFormBase extends Component {
     const error = this.state.error;
     return (
       <div class="w-50 mx-auto">
-      <Form>
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control 
-            type="text"
-            placeholder="Email"
-            name="email"
-            onChange={this.onChange}
-            class="w-50"
+        <Form>
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control 
+              type="text"
+              placeholder="Email"
+              name="email"
+              onChange={this.onChange}
+              class="w-50"
+              />
+            <Form.Text className="text-muted">
+              We'll never share your email with anyone else.
+            </Form.Text>
+          </Form.Group>
+
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control 
+              type="password"
+              placeholder="Password"
+              name="password"
+              onChange={this.onChange}
+              class="w-50"
             />
-          <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
-          </Form.Text>
-        </Form.Group>
+          </Form.Group>
 
-        <Form.Group controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control 
-            type="password"
-            placeholder="Password"
-            name="password"
-            onChange={this.onChange}
-            class="w-50"
-          />
-        </Form.Group>
+          <div class="text-center">
+            <div class="d-inline-block m-1">    
+              <Link to={{
+                pathname: '/signup',
+                state: {
+                  email: this.state.email,
+                }
+              }}>
+                <Button variant="warning" as="input" type="submit" value="Sign Up"></Button>
+              </Link>
+            </div>
 
-        <div class="text-center">
-          <div class="d-inline-block m-1">    
-            <Link to={{
-              pathname: '/signup',
-              state: {
-                email: this.state.email,
-              }
-            }}>
-              <Button variant="warning" as="input" type="submit" value="Sign Up"></Button>
-            </Link>
+            <div class="d-inline-block m-1">
+              <Button variant="outline-warning" as="input" type="submit" value="Log In" onClick={this.onLogIn}></Button>
+            </div>
           </div>
+      </Form>
 
-          <div class="d-inline-block m-1">
-            <Button variant="outline-warning" as="input" type="submit" value="Log In" onClick={this.onLogIn}></Button>
-          </div>
-        </div>
-    </Form>
-
-    <div class="w-50 mx-auto text-center">
-      {error && <p>{error.message}</p>}
-      <PasswordForgetLink />
-    </div>
+      <div class="w-50 mx-auto text-center">
+        {error && <p>{error.message}</p>}
+        <PasswordForgetLink />
+      </div>
     </div>
     );
   }
