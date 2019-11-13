@@ -31,7 +31,6 @@ class UserInfo extends Component {
           <Link to={{pathname: '/home'}}>
             <button>Home</button>
           </Link>
-          <button>Chat</button>
         </div>
         <div class="d-inline-block float-right mt-3 mr-5">
           <img src={flag_icon} width="40px" class="ml-2 mr-4" alt="flag icon"/>

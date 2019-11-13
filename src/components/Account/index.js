@@ -22,7 +22,7 @@ const AccountPage = () => (
 
           <h3 class="d-inline-block">{authUser.email}</h3>
           <div class="mt-4">
-            <PasswordForgetForm />
+            <h5>Want to change password?</h5>
             <PasswordChangeForm />
           </div>
         </div>
