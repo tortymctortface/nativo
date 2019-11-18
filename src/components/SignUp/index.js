@@ -1,7 +1,6 @@
 //Sign up page
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import Popup from "reactjs-popup"
 import * as ROUTES from '../../constants/routes';
 import { withFirebase } from '../Firebase'; 
 import { compose } from 'recompose';
@@ -9,7 +8,7 @@ import { compose } from 'recompose';
 const SignUpPage = () => (
   <div>
     <h1>SignUp</h1>
-  <SignUpForm />
+    <SignUpForm />
   </div>
 );
 
@@ -29,6 +28,7 @@ class SignUpFormBase extends Component {
     super(props);
 
     this.state = {...INITIAL_STATE};
+    this.state.email = this.props.location.state.email;
   }
   onSubmit = event => {
     const { username, email, passwordOne, nativelang, learnlang, agecheck} = this.state;
@@ -41,9 +41,9 @@ class SignUpFormBase extends Component {
           .set({
           username,
           email,
- 	  nativelang,
-	  learnlang,
-	  agecheck,
+ 	        nativelang,
+	        learnlang,
+	        agecheck,
           });
       })
 	.then(() => {
@@ -65,9 +65,9 @@ class SignUpFormBase extends Component {
       email,
       passwordOne,
       passwordTwo,
-	nativelang,
-	learnlang,
-	agecheck,
+	    nativelang,
+	    learnlang,
+	    agecheck,
       error,
     } = this.state;
 
@@ -91,8 +91,8 @@ function terms_change(checkbox){
       	passwordOne === '' ||
       	email === ''||
       	username === ''||
-	nativelang === ''||
- 	learnlang === '';
+	      nativelang === ''||
+ 	      learnlang === '';
 	
     
 return (
@@ -134,31 +134,31 @@ return (
 <br/>
 
 {/*What language do you speak fluently*/}		
-         <p>What language do you speak fluently?</p> 
-        <select name="nativelang" defaultValue ={nativelang} onChange={this.onChange}>
-	<option value="" disabled selected>I am fluent in</option>
+      <p>What language do you speak fluently?</p> 
+      <select name="nativelang" defaultValue ={nativelang} onChange={this.onChange}>
+	      <option value="" disabled selected>I am fluent in</option>
       	<option value="Arabic">Arabic</option>
-	<option value="English">English</option>
+	      <option value="English">English</option>
         <option value="German">German</option>
         <option value="Hindi">Hindi</option>
-         <option value="Irish">Irish</option>
-         <option value="Spanish">Spanish</option>
-	<option value="Welsh">Welsh</option>
-          </select>
+        <option value="Irish">Irish</option>
+        <option value="Spanish">Spanish</option>
+      	<option value="Welsh">Welsh</option>
+      </select>
  <br/>       
 <br/>
 {/*What language would you like to practice*/}
-	<p>  What language would you like to practice?</p>
-        <select name="learnlang" defaultValue ={learnlang} onChange={this.onChange}>
-	<option value="" disabled selected>I will speak</option>
+	    <p>What language would you like to practice?</p>
+      <select name="learnlang" defaultValue ={learnlang} onChange={this.onChange}>
+	      <option value="" disabled selected>I will speak</option>
       	<option value="Arabic">Arabic</option>
-	<option value="English">English</option>
+	      <option value="English">English</option>
         <option value="German">German</option>
         <option value="Hindi">Hindi</option>
-         <option value="Irish">Irish</option>
-         <option value="Spanish">Spanish</option>
-	<option value="Welsh">Welsh</option>
-          </select>
+        <option value="Irish">Irish</option>
+        <option value="Spanish">Spanish</option>
+	      <option value="Welsh">Welsh</option>
+      </select>
        
 <br/>
 <br/>
