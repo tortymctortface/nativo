@@ -2,8 +2,6 @@ import app from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
 
-
-
 const config = {
   apiKey: "AIzaSyADM-ZpaFkfUMb3oKEbboh6ELmS3C8V4Q8",
   authDomain: "nativo-c2349.firebaseapp.com",
@@ -15,19 +13,17 @@ const config = {
   measurementId: "G-7LJ2DJGVG0"
 };
 
-let reff;
-
 class Firebase {
-  constructor() {
-    app.initializeApp(config);
+    constructor() {
+      app.initializeApp(config);
 
-    this.auth = app.auth();
-    this.db = app.database();
-  }
+      this.auth = app.auth();
+ 	this.db = app.database();
+    }
 
-  // *** Auth API ***
+    // *** Auth API ***
   doCreateUserWithEmailAndPassword = (email, password) =>
-    this.auth.createUserWithEmailAndPassword(email, password);
+  this.auth.createUserWithEmailAndPassword(email, password);
 
   doSignInWithEmailAndPassword = (email, password) =>
     this.auth.signInWithEmailAndPassword(email, password);
@@ -38,21 +34,8 @@ class Firebase {
 
   doPasswordUpdate = password =>
     this.auth.currentUser.updatePassword(password);
-  /* User API */
+// *** User API ***
   user = uid => this.db.ref(`users/${uid}`);
   users = () => this.db.ref('users');
-}
-  /**User info - Matt 
-  db = app.database
-var reff = db.ref('users');
-reff.on('value', gotData, errData)
-}
-function gotData(data) {
-  console.log(data);
-}
-function errData(err) {
-  console.log('Error');
-  console.log(err);
-}**/
-
+  }
 export default Firebase;

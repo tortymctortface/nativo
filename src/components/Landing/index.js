@@ -112,6 +112,7 @@ class LandingFormBase extends Component {
       <div class="w-50 mx-auto text-center">
         {error && <p>{error.message}</p>}
         <PasswordForgetLink />
+<Link to={ROUTES.ADMIN}>Admin</Link>
       </div>
     </div>
     );
