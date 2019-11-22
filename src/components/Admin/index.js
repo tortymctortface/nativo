@@ -36,7 +36,7 @@ class AdminPage extends Component {
 	
 	<UserList users={users} />
 
-      </div>
+      </div >
     );
   }
 }

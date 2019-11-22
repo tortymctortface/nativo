@@ -89,7 +89,7 @@ class LandingFormBase extends Component {
               onChange={this.onChange}
               class="w-50"
             />
-          </Form.Group>
+          </Form.Group >
 
           <div class="text-center">
             <div class="d-inline-block m-1">    
