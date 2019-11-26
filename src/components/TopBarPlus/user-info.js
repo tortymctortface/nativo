@@ -27,7 +27,6 @@ class UserInfo extends Component {
         }));
         const currentUID = this.props.authUser.uid;
         let currentUser = usersList.find(user => user.uid === currentUID);
-        console.log(currentUser);
         this.setState({
           users: usersList,
           loading: false,
