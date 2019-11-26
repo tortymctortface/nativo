@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withFirebase } from '../Firebase';
+
 class AdminPage extends Component {
   constructor(props) {
     super(props);
@@ -26,15 +27,15 @@ class AdminPage extends Component {
     this.props.firebase.users().off();
   }
   render() {
-	const { users, loading } = this.state;
+  const { users, loading } = this.state;
 
     return (
       <div>
         <h1>Admin</h1>
 
-	{loading && <div>Loading ...</div>}
+	      {loading && <div>Loading ...</div>}
 	
-	<UserList users={users} />
+	      <UserList users={users} />
 
       </div>
     );
