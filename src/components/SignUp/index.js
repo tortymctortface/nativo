@@ -23,6 +23,21 @@ const INITIAL_STATE = {
   error: null,
 };
 
+
+
+var data = {
+
+	username: '',
+  email: '',
+  passwordOne: '',
+  passwordTwo: '',
+  nativelang: '',
+  learnlang: '',
+  agecheck: ''
+
+}
+
+
 class SignUpFormBase extends Component {
   constructor(props) {
     super(props);
@@ -32,6 +47,7 @@ class SignUpFormBase extends Component {
   }
   onSubmit = event => {
     const { username, email, passwordOne, nativelang, learnlang, agecheck} = this.state;
+	data = this.state;
     this.props.firebase
       .doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
@@ -110,7 +126,7 @@ return (
         <input 
           name="email"
           value={email}
-          onChange={this.onChange}
+          onChange={this.onChange} 
           type="text"
           placeholder="Email Address"
         />
