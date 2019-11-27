@@ -39,7 +39,7 @@ class UserInfo extends Component {
     }
   
     render() {
-        const { this_username, loading } = this.state;
+        const { this_username } = this.state;
       return (
         <div class="d-inline-block float-right">
           <div class="d-inline-block mt-3 mr-5">
