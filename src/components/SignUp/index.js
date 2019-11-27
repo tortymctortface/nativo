@@ -7,7 +7,7 @@ import { compose } from 'recompose';
 
 const SignUpPage = () => (
   <div>
-    <h1>SignUp</h1>
+    <h1>Sign Up</h1>
     <SignUpForm />
   </div>
 );
@@ -99,29 +99,40 @@ return (
 <div>
       <form onSubmit={this.onSubmit}>
 {/*username input box*/}
+<label for="username"><b>Username</b></label>
+<br></br>
         <input 
           name="username"
           value={username}
           onChange={this.onChange}
           type="text"
-          placeholder="Username"
+          placeholder="Enter Username"
         />
+        <br></br>
 {/*email address input box*/}
+<label for="email"><b>Email</b></label>
+<br></br>
         <input 
           name="email"
           value={email}
           onChange={this.onChange}
           type="text"
-          placeholder="Email Address"
+          placeholder="Enter Email Address"
         />
+        <br></br>
 {/*both password input boxes*/}
+<label for="password"><b>Password</b></label>
+<br></br>
         <input
           name="passwordOne"
           value={passwordOne}
           onChange={this.onChange}
           type="password"
-          placeholder="Password"
+          placeholder="Enter Password"
         />
+        <br></br>
+<label for="Confirmpassword"><b>Confirm Password</b></label>
+<br></br>
         <input
           name="passwordTwo"
           value={passwordTwo}
@@ -134,7 +145,8 @@ return (
 <br/>
 
 {/*What language do you speak fluently*/}		
-      <p>What language do you speak fluently?</p> 
+      <b>What language do you speak fluently?</b> 
+      <br></br>
       <select name="nativelang" defaultValue ={nativelang} onChange={this.onChange}>
 	      <option value="" disabled selected>I am fluent in</option>
       	<option value="Arabic">Arabic</option>
@@ -148,7 +160,8 @@ return (
  <br/>       
 <br/>
 {/*What language would you like to practice*/}
-	    <p>What language would you like to practice?</p>
+	    <b>What language would you like to practice?</b>
+      <br/>
       <select name="learnlang" defaultValue ={learnlang} onChange={this.onChange}>
 	      <option value="" disabled selected>I will speak</option>
       	<option value="Arabic">Arabic</option>
@@ -164,7 +177,7 @@ return (
 <br/>
 
 {/*over 18 slider - needs to be made a mandatory function for all users*/}
-<p> Lastly, we need to make sure you are over 18 to use our app:</p>
+<b> Lastly, we need to make sure you are over 18 to use our app:</b>
 
 <p> Yes I am over 18</p>
 <label class="switch">
@@ -188,6 +201,8 @@ return (
     );
 
   }
+
+  
 }
 const SignUpLink = () => (
   <p>
@@ -202,3 +217,5 @@ const SignUpForm = compose(
 
 export default SignUpPage;
 export { SignUpForm, SignUpLink };
+
+
