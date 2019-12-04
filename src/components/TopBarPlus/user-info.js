@@ -8,13 +8,22 @@ import user_img from '../../images/user-img.png';
 import xp_icon from '../../images/xp-icon.png';
 import flag_icon from '../../images/flag-icon.png';
 
+import german_icon from '../../images/german.png'
+import hindi_icon from '../../images/hindi.png'
+import irish_icon from '../../images/irish.png'
+import english_icon from '../../images/english.png'
+import arabic_icon from '../../images/arabic.png'
+import spanish_icon from '../../images/spanish.png'
+import welsh_icon from '../../images/welsh.png'
+
 class UserInfo extends Component {
     constructor(props) {
       super(props);
       this.state = {
         loading: false,
         users: [],
-        this_username: ""
+        this_username: "",
+        language: ""
       };
     }
     componentDidMount() {
@@ -30,7 +39,8 @@ class UserInfo extends Component {
         this.setState({
           users: usersList,
           loading: false,
-          this_username: currentUser.username
+          this_username: currentUser.username,
+          language: currentUser.learnlang
         });
       });
     }
@@ -40,6 +50,16 @@ class UserInfo extends Component {
   
     render() {
         const { this_username } = this.state;
+        let language = this.state.language.toLowerCase();
+        let images = {
+          irish: irish_icon,
+          german: german_icon,
+          english: english_icon,
+          hindi: hindi_icon,
+          arabic: arabic_icon,
+          welsh: welsh_icon,
+          spanish: spanish_icon
+        }
       return (
         <div class="d-inline-block float-right">
           <div class="d-inline-block mt-3 mr-5">
@@ -48,7 +68,7 @@ class UserInfo extends Component {
             </Link>
           </div>
           <div class="d-inline-block float-right mt-3 mr-5">
-            <img src={flag_icon} width="40px" class="ml-2 mr-4" alt="flag icon"/>
+            {language !== "" && <img src={images[language]} width="50px" class="ml-2 mr-4" alt="flag icon"/>}
             59
             <img src={xp_icon} width="40px" class="ml-2 mr-4" alt="xp icon"/>
             Hi, {this_username != "" && this_username}
