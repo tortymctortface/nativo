@@ -12,16 +12,11 @@ const SignUpPage = () => (
   </div>
 );
 
-<<<<<<< Updated upstream
 
 let nx = '0';
 let lx = '0';
-let arrayx = '0';
-=======
-let nx = '0';
-let lx = '0';
 let groupx = '0';
->>>>>>> Stashed changes
+
 
 const INITIAL_STATE = {
   username: '',
@@ -48,17 +43,11 @@ var data = {
   nativelang: '',
   learnlang: '',
   agecheck: '',
-<<<<<<< Updated upstream
-  nx: '',
-  lx: '',
-  arrayx:'' ,
-	
-=======
   lx: '',
   nx:'',
   groupx: ''
 
->>>>>>> Stashed changes
+
 }
 
 
@@ -70,82 +59,7 @@ class SignUpFormBase extends Component {
     this.state.email = this.props.location.state.email;
   }
   onSubmit = event => {
-<<<<<<< Updated upstream
 
-    const { username, email, passwordOne, nativelang, learnlang, agecheck} = this.state
-//assigning a value to lx
-if (learnlang == "Arabic")
-{
-	lx = "1";
-}
-else if (learnlang == "English")
-{
-	lx = "2";
-}
-else if (learnlang == "French" )
-{
-	lx ="4";
-}
-else if (learnlang == "German" )
-{
-	lx = "8";
-}
-else if (learnlang == "Hindi")
-{
-	lx = "16";
-}
-else if (learnlang == "Irish")
-{
-	lx = "32";
-}
-else if (learnlang == "Spanish")
-{
-	lx = "64";
-}
-else if(learnlang == "Welsh")
-{
-	lx = "128";
-}
-//assigning a value to nx
-if (nativelang == "Arabic")
-{
-	nx = "1";
-}
-else if (nativelang == "English")
-{
-	nx = "2";
-}
-else if (nativelang == "French" )
-{
-	nx ="4";
-}
-else if (nativelang == "German" )
-{
-	nx = "8";
-}
-else if (nativelang == "Hindi")
-{
-	nx = "16";
-}
-else if (nativelang == "Irish")
-{
-	nx = "32";
-}
-else if (nativelang == "Spanish")
-{
-	nx = "64";
-}
-else if(nativelang == "Welsh")
-{
-	nx = "128";
-}
-
-var nxx = parseInt(nx, 10);
-var lxx = parseInt(lx, 10);
-arrayx = nxx + lxx;
-
- 
-=======
     const { username, email, passwordOne, nativelang, learnlang, agecheck} = this.state;
 //assigning lx a value
 if (learnlang == "Arabic")
@@ -220,7 +134,6 @@ var lxx = parseInt(lx,10);
 
 groupx = lxx + nxx;
 
->>>>>>> Stashed changes
 	data = this.state;
     this.props.firebase
       .doCreateUserWithEmailAndPassword(email, passwordOne)
@@ -237,11 +150,8 @@ groupx = lxx + nxx;
 	        agecheck,
 		nx,
 		lx,
-<<<<<<< Updated upstream
-		arrayx
-=======
 		groupx
->>>>>>> Stashed changes
+
           });
       })
 	.then(() => {

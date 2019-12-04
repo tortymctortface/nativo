@@ -59,15 +59,6 @@ const UserList = ({ users }) => (
           <strong>Learn Language</strong> {user.learnlang}
         </span>
 	<span>
-<<<<<<< Updated upstream
-          <strong>Nx</strong> {user.nx}
-        </span>
-<span>
-          <strong>Lx</strong> {user.lx}
-        </span>
-<span>
-          <strong>Arrayx</strong> {user.arrayx}
-=======
           <strong>nx</strong> {user.nx}
         </span>
 	<span>
@@ -75,7 +66,6 @@ const UserList = ({ users }) => (
         </span>
 	<span>
           <strong>groupx</strong> {user.groupx}
->>>>>>> Stashed changes
         </span>
       </li>
     ))}
