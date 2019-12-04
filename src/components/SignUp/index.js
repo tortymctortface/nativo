@@ -14,6 +14,12 @@ const SignUpPage = () => (
   </div>
 );
 
+
+let nx = '0';
+let lx = '0';
+let groupx = '0';
+
+
 const INITIAL_STATE = {
   username: '',
   email: '',
@@ -22,8 +28,30 @@ const INITIAL_STATE = {
   nativelang: '',
   learnlang: '',
   agecheck: '',
+  nx: '', 	//number assigned for native language chosen(to be used in matching algorithm)
+  lx: '',//number assigned for learning language chosen(to be used in matching algorithm)
+  arrayx: '', // nx+lx = arrayx
   error: null,
 };
+
+
+
+var data = {
+
+	username: '',
+  email: '',
+  passwordOne: '',
+  passwordTwo: '',
+  nativelang: '',
+  learnlang: '',
+  agecheck: '',
+  lx: '',
+  nx:'',
+  groupx: ''
+
+
+}
+
 
 class SignUpFormBase extends Component {
   constructor(props) {
@@ -33,12 +61,88 @@ class SignUpFormBase extends Component {
     this.state.email = this.props.location.state.email;
   }
   onSubmit = event => {
+
     const { username, email, passwordOne, nativelang, learnlang, agecheck} = this.state;
+//assigning lx a value
+if (learnlang == "Arabic")
+{
+	lx= '1';
+}
+else if (learnlang == "English")
+{
+	lx= '2';
+}
+else if (learnlang == "French")
+{
+	lx= '4';
+}
+else if (learnlang == "German")
+{
+	lx= '8';
+}
+else if (learnlang == "Hindi")
+{
+	lx= '16';
+}
+else if (learnlang == "Irish")
+{
+	lx= '32';
+}
+else if (learnlang == "Spanish")
+{
+	lx= '64';
+}
+else if (learnlang == "Welsh")
+{
+	lx= '128';
+}
+
+//assigning nx a value
+if (nativelang == "Arabic")
+{
+	nx= '1';
+}
+else if (nativelang == "English")
+{
+	nx= '2';
+}
+else if (nativelang == "French")
+{
+	nx= '4';
+}
+else if (nativelang == "German")
+{
+	nx= '8';
+}
+else if (nativelang == "Hindi")
+{
+	nx= '16';
+}
+else if (nativelang == "Irish")
+{
+	nx= '32';
+}
+else if (nativelang == "Spanish")
+{
+	nx= '64';
+}
+else if (nativelang == "Welsh")
+{
+	nx= '128';
+}
+
+var nxx = parseInt (nx,10);
+var lxx = parseInt(lx,10);
+
+groupx = lxx + nxx;
+
+	data = this.state;
     this.props.firebase
       .doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
         // Create a user in your Firebase realtime database including the following info
-        return this.props.firebase
+      
+	return this.props.firebase
           .user(authUser.user.uid)
           .set({
           username,
@@ -46,6 +150,10 @@ class SignUpFormBase extends Component {
  	        nativelang,
 	        learnlang,
 	        agecheck,
+		nx,
+		lx,
+		groupx
+
           });
       })
 	.then(() => {
@@ -70,6 +178,9 @@ class SignUpFormBase extends Component {
 	    nativelang,
 	    learnlang,
 	    agecheck,
+      lx,
+      nx,
+      arrayx,
       error,
     } = this.state;
 
@@ -117,7 +228,7 @@ return (
         <input id="signupinput"
           name="email"
           value={email}
-          onChange={this.onChange}
+          onChange={this.onChange} 
           type="text"
           placeholder="Enter Email Address"
         />
@@ -151,13 +262,14 @@ return (
       <br></br>
       <select name="nativelang" defaultValue ={nativelang} onChange={this.onChange}>
 	      <option value="" disabled selected>I am fluent in</option>
-      	<option value="Arabic">Arabic</option>
-	      <option value="English">English</option>
-        <option value="German">German</option>
-        <option value="Hindi">Hindi</option>
-        <option value="Irish">Irish</option>
-        <option value="Spanish">Spanish</option>
-      	<option value="Welsh">Welsh</option>
+      	<option value="Arabic" value2 = {nx} nx = "1" >Arabic</option>
+	      <option value="English" nx = "2" >English</option>
+	<option value ="French" nx ="4" >French</option>
+        <option value="German"  nx="8" >German</option>
+        <option value="Hindi" nx = "16" >Hindi</option>
+        <option value="Irish"  nx= "32" >Irish</option>
+        <option value="Spanish"  nx="64" >Spanish</option>
+      	<option value="Welsh"  nx= "128" >Welsh</option>
       </select>
  <br/>       
 <br/>
@@ -166,15 +278,16 @@ return (
       <br/>
       <select name="learnlang" defaultValue ={learnlang} onChange={this.onChange}>
 	      <option value="" disabled selected>I will speak</option>
-      	<option value="Arabic">Arabic</option>
-	      <option value="English">English</option>
-        <option value="German">German</option>
-        <option value="Hindi">Hindi</option>
-        <option value="Irish">Irish</option>
-        <option value="Spanish">Spanish</option>
-	      <option value="Welsh">Welsh</option>
+      	<option value="Arabic" lx = "1"  >Arabic</option>
+	      <option value="English" lx = "2" >English</option>
+<option value ="French" lx ="4" >French</option>
+        <option value="German"  lx ="8" >German</option>
+        <option value="Hindi"  lx = "16" >Hindi</option>
+        <option value="Irish"  lx="32">Irish</option>
+        <option value="Spanish"  lx= "64">Spanish</option>
+	      <option value="Welsh"  lx="128">Welsh</option>
       </select>
-       
+   
 <br/>
 <br/>
 
@@ -208,7 +321,7 @@ return (
 }
 const SignUpLink = () => (
   <p>
-    Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
+    No account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
   </p>
 );
 
