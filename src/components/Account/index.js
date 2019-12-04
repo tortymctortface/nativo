@@ -28,7 +28,7 @@ const AccountPage = () => (
         </div>
 
         <div class="d-inline-block float-right w-50 mr-5">
-          <LanguageCard />
+          <LanguageCard authUser={authUser}/>
           <FriendCard />
         </div>
       </div>
