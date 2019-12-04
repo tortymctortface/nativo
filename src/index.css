@@ -99,7 +99,7 @@ input:checked + .slider:before {
   background: white;  
 }
 
-/*/New code from Peter/*/
+/*/New code from Peter for the sign up page/*/
 input[type=text], input[type=password] {
   width: 40%;
   padding: 15px;

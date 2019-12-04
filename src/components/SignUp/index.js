@@ -112,7 +112,7 @@ return (
 {/*email address input box*/}
 <label for="email"><b>Email</b></label>
 <br></br>
-        <input 
+        <input
           name="email"
           value={email}
           onChange={this.onChange}
