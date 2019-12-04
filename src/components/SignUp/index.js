@@ -1,4 +1,5 @@
 //Sign up page
+import TopBar from '../TopBar/top-bar';
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
@@ -7,7 +8,9 @@ import { compose } from 'recompose';
 
 const SignUpPage = () => (
   <div>
-    <h1>Sign Up</h1>
+    <TopBar /> 
+    <h1 id="signuph1">Sign Up</h1>
+    <br></br>
     <SignUpForm />
   </div>
 );
@@ -199,12 +202,12 @@ groupx = lxx + nxx;
 	
     
 return (
-<div>
+<div id="signupall">
       <form onSubmit={this.onSubmit}>
 {/*username input box*/}
 <label for="username"><b>Username</b></label>
 <br></br>
-        <input 
+        <input id="signupinput"
           name="username"
           value={username}
           onChange={this.onChange}
@@ -215,7 +218,7 @@ return (
 {/*email address input box*/}
 <label for="email"><b>Email</b></label>
 <br></br>
-        <input 
+        <input id="signupinput"
           name="email"
           value={email}
           onChange={this.onChange} 
@@ -226,7 +229,7 @@ return (
 {/*both password input boxes*/}
 <label for="password"><b>Password</b></label>
 <br></br>
-        <input
+        <input id="signupinput"
           name="passwordOne"
           value={passwordOne}
           onChange={this.onChange}
@@ -236,7 +239,7 @@ return (
         <br></br>
 <label for="Confirmpassword"><b>Confirm Password</b></label>
 <br></br>
-        <input
+        <input id="signupinput"
           name="passwordTwo"
           value={passwordTwo}
           onChange={this.onChange}
