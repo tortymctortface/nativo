@@ -1,4 +1,5 @@
 //Sign up page
+import TopBar from '../TopBar/top-bar';
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
@@ -7,7 +8,7 @@ import { compose } from 'recompose';
 
 const SignUpPage = () => (
   <div>
-    <br></br>
+    <TopBar /> 
     <h1 id="signuph1">Sign Up</h1>
     <br></br>
     <SignUpForm />
