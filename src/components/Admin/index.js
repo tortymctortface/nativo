@@ -57,6 +57,15 @@ const UserList = ({ users }) => (
         <span>
           <strong>Learn Language</strong> {user.learnlang}
         </span>
+	<span>
+          <strong>Nx</strong> {user.nx}
+        </span>
+<span>
+          <strong>Lx</strong> {user.lx}
+        </span>
+<span>
+          <strong>Arrayx</strong> {user.arrayx}
+        </span>
       </li>
     ))}
   </ul>
