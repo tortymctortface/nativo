@@ -25,7 +25,8 @@ const INITIAL_STATE = {
   passwordTwo: '',
   nativelang: '',
   learnlang: '',
-  agecheck: '',
+  agecheck: false,
+  ismatched: false,
   nx: '', 	//number assigned for native language chosen(to be used in matching algorithm)
   lx: '',//number assigned for learning language chosen(to be used in matching algorithm)
   arrayx: '', // nx+lx = arrayx
@@ -42,10 +43,11 @@ var data = {
   passwordTwo: '',
   nativelang: '',
   learnlang: '',
-  agecheck: '',
+  agecheck: false,
   lx: '',
   nx:'',
-  groupx: ''
+  groupx: '',
+  ismatched: false
 
 
 }
@@ -60,7 +62,7 @@ class SignUpFormBase extends Component {
   }
   onSubmit = event => {
 
-    const { username, email, passwordOne, nativelang, learnlang, agecheck} = this.state;
+    const { username, email, passwordOne, nativelang, learnlang, agecheck, ismatched} = this.state;
 //assigning lx a value
 if (learnlang == "Arabic")
 {
@@ -150,7 +152,8 @@ groupx = lxx + nxx;
 	        agecheck,
 		nx,
 		lx,
-		groupx
+		groupx,
+	ismatched
 
           });
       })
@@ -182,28 +185,17 @@ groupx = lxx + nxx;
       error,
     } = this.state;
 
-var a = new Boolean();
-function terms_change(checkbox){
-    //If it is checked.
-    if(checkbox.checked){
-        a = true;
-	return a;
-    }
-    //If it has been unchecked.
-    else{
-        a = false;
-	return a;
-    }
-}
 
-{/*function to invalidate submit button if any of the follwing are true*/}
+
+//function to invalidate submit button if any of the follwing are true
    const isInvalid =
         passwordOne !== passwordTwo ||
       	passwordOne === '' ||
       	email === ''||
       	username === ''||
 	      nativelang === ''||
- 	      learnlang === '';
+ 	      learnlang === ''||
+		agecheck == false;
 	
     
 return (
@@ -294,11 +286,9 @@ return (
 
 <p> Yes I am over 18</p>
 <label class="switch">
-  <input 
-   type="checkbox"
-   value ={agecheck}
-   id="terms" 
-   />
+  <input type="checkbox" 
+   value={agecheck} 
+   onChange = {(e) =>this.setState({agecheck: !this.state.agecheck})}/>
   <span class="slider round"></span>
 </label>
 
