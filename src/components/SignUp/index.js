@@ -300,6 +300,10 @@ return (
 {/*submit button*/}
      
   <button disabled={isInvalid} type="submit">Sign Up</button>
+  
+  <Link to={ROUTES.LANDING}>
+    <button>Back</button>
+  </Link>
         {error && <p>{error.message}</p>}
 
       </form>
