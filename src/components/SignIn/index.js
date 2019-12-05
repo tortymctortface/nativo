@@ -19,7 +19,7 @@ const SignInPage = () => (
 const INITIAL_STATE = {
   email: '',
   password: '',
-  error: null,
+  error: null
 };
 class SignInFormBase extends Component {
   constructor(props) {

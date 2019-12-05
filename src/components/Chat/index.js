@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withAuthorization } from '../Session';
+import { AuthUserContext, withAuthorization } from '../Session';
 
 import TopBarPlus from '../TopBarPlus/top-bar-plus';
 
