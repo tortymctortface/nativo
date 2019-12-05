@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import TopBarPlus from '../TopBarPlus/top-bar-plus';
 import LanguageCard from '../LanguageCard/index';
 import FriendCard from '../FriendCard/index';
 
-import { PasswordForgetForm } from '../PasswordForget';
 import PasswordChangeForm from '../PasswordChange';
 
 import { AuthUserContext, withAuthorization } from '../Session';

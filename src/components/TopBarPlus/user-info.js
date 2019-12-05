@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 
 import user_img from '../../images/user-img.png';
 import xp_icon from '../../images/xp-icon.png';
-import flag_icon from '../../images/flag-icon.png';
 
 import german_icon from '../../images/german.png'
 import hindi_icon from '../../images/hindi.png'
@@ -32,7 +31,7 @@ class UserInfo extends Component {
         const usersObject = snapshot.val();
         const usersList = Object.keys(usersObject).map(key => ({
           ...usersObject[key],
-          uid: key,
+          uid: key
         }));
         const currentUID = this.props.authUser.uid;
         let currentUser = usersList.find(user => user.uid === currentUID);

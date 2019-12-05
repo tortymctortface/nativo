@@ -1,10 +1,25 @@
 import React, { Component } from 'react';
+import { withFirebase } from '../Firebase';
 import Countdown from 'react-countdown-now';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Card from 'react-bootstrap/Card';
 
-export default class CountdownCard extends Component {
+class CountdownCard extends Component {
+    constructor(props){
+      super(props);
+    }
+    componentDidMount() {
+      console.log(this.props);
+      this.props.firebase.dbTime()
+        .once('value')
+        .then(function stv(data) {
+          console.log(data.val() + Date.now());
+        }, function (err) {
+          return err;
+        });
+    }
+
     render() {
       return (
         <div class="d-inline-block float-right mr-5 text-center"> 
@@ -22,3 +37,5 @@ export default class CountdownCard extends Component {
       );
     }
   }
+
+  export default withFirebase(CountdownCard);
