@@ -37,7 +37,7 @@ class AdminPage extends Component {
 	
 	      <UserList users={users} />
 
-      </div>
+      </div >
     );
   }
 }
@@ -57,6 +57,15 @@ const UserList = ({ users }) => (
         </span>
         <span>
           <strong>Learn Language</strong> {user.learnlang}
+        </span>
+	<span>
+          <strong>nx</strong> {user.nx}
+        </span>
+	<span>
+          <strong>lx</strong> {user.lx}
+        </span>
+	<span>
+          <strong>groupx</strong> {user.groupx}
         </span>
       </li>
     ))}

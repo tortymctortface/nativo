@@ -98,3 +98,23 @@ input:checked + .slider:before {
   border-radius: 20px;  
   background: white;  
 }
+
+/*/New code from Peter for the sign up page/*/
+#signupinput{
+  width: 40%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+#signuph1{
+  text-align: center;
+  font: italic bold 40px/30px Georgia, serif;
+}
+
+#signupall
+{
+  text-align: center;
+}
