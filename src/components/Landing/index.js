@@ -76,7 +76,7 @@ class LandingFormBase extends Component {
               class="w-50"
               />
             <Form.Text className="text-muted">
-              We'll never share your email with anyone else.
+              Your email will be displayed on your profile.
             </Form.Text>
           </Form.Group>
 
@@ -112,7 +112,7 @@ class LandingFormBase extends Component {
       <div class="w-50 mx-auto text-center">
         {error && <p>{error.message}</p>}
         <PasswordForgetLink />
-<Link to={ROUTES.ADMIN}>Admin</Link>
+        <Link to={ROUTES.ADMIN}>Admin</Link>
       </div>
     </div>
     );

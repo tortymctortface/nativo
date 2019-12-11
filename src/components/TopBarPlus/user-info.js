@@ -4,6 +4,9 @@ import SignOut from '../SignOut/index';
 import { withFirebase } from '../Firebase';
 import { Link } from 'react-router-dom';
 
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
+
 import user_img from '../../images/user-img.png';
 import xp_icon from '../../images/xp-icon.png';
 
@@ -46,6 +49,10 @@ class UserInfo extends Component {
     componentWillUnmount() {
       this.props.firebase.users().off();
     }
+
+    renderTooltip = (props) => {
+      return <Tooltip {...props}>Account Page</Tooltip>;
+    }
   
     render() {
         const { this_username } = this.state;
@@ -72,7 +79,12 @@ class UserInfo extends Component {
             <img src={xp_icon} width="40px" class="ml-2 mr-4" alt="xp icon"/>
             Hi, {this_username != "" && this_username}
             <Link to={{pathname: '/account'}}>
-              <img src={user_img} width="40px" class="ml-3 mr-3" alt="user image"/>
+              <OverlayTrigger
+                placement="bottom"
+                overlay={this.renderTooltip}
+              >
+                <img src={user_img} width="40px" class="ml-3 mr-3" alt="user image"/>
+              </OverlayTrigger>
             </Link>
   
             <SignOut />

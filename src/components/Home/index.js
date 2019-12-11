@@ -18,7 +18,7 @@ const HomePage = () => (
         <TopBarPlus />
 
         <div>
-          <div class="ml-5 mt-3 d-inline-block">
+          <div class="ml-5 d-inline-block">
             <h1>Welcome back!</h1>
             <p>Jump straight back into learning. Practice makes perfect.</p>
           </div>
@@ -28,8 +28,6 @@ const HomePage = () => (
               <Button variant="warning" as="input" type="submit" value="Chat" style={{ width: '35rem', margin: 'auto'}}></Button>
             </Link>
           </div>
-
-          <br /><br />
         </div>
 
         <div>
@@ -37,7 +35,7 @@ const HomePage = () => (
 
           <CountdownCard />
 
-          <br /><br />
+          <br />
         </div>
 
         <div>

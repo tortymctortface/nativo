@@ -8,7 +8,7 @@ export default class XPProgressCard extends Component {
     render() {
         const xpPercent = 80;
       return (
-        <div class="d-inline-block ml-5"> 
+        <div class="d-inline-block ml-5 mt-3"> 
           <Card style={{width: '35rem'}}>
             <Card.Header as="h5">
                 XP
