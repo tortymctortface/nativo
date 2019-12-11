@@ -17,7 +17,8 @@ export default class FriendCard extends Component {
               <div class="d-inline-block ml-3">
                 <Card.Title>Frank365</Card.Title>
                 <Card.Text>
-                  Native Language: French
+                  Native Language: French <br />
+                  Contact: frank@email.com
                 </Card.Text>
               </div>
             </div>
@@ -28,7 +29,8 @@ export default class FriendCard extends Component {
               <div class="d-inline-block ml-3">
                 <Card.Title>Anne_Berlin</Card.Title>
                 <Card.Text>
-                  Native Language: German
+                  Native Language: German <br />
+                  Contact: anne@email.com
                 </Card.Text>
               </div>
             </div>

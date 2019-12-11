@@ -20,7 +20,6 @@ class WordOfTheDayCard extends Component {
     };
   }
   componentDidMount() {
-    this.setState({ loading: true });
     this.props.firebase.users().on('value', snapshot => {
       const usersObject = snapshot.val();
       const usersList = Object.keys(usersObject).map(key => ({
