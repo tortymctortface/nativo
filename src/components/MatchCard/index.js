@@ -37,30 +37,28 @@ class MatchCard extends Component {
 	if (matchUser == null){
 
       this.setState({
-	username: 'We are still searching for you perfect match',
+	      username: 'We are still searching for you perfect match',
         loading: false,
         language: 'We are looking for someone who is a native ' + currentUser.learnlang + ' speaker for you.',
-	email : 'Please check back soon, we have new members every hour',
-	ismatched :false,
-	penpal: '',
-	addfriend: 'You will soon be able to add some friends here',
-	matchheader: 'Your perfect match is coming soon..'
-	
-      		});
+	      email : 'Please check back soon, we have new members every hour',
+	      ismatched :false,
+	      penpal: '',
+	      addfriend: 'You will soon be able to add some friends here',
+	      matchheader: 'Your perfect match is coming soon..'
+      });
 }
 	else{
-
       this.setState({
-	username: matchUser.username,
+	      username: matchUser.username,
         loading: false,
         language: 'Native in : ' + currentUser.learnlang,
-	email : 'Contact : ' + matchUser.email,
-	groupx : currentUser.groupx,
-	ismatched : true,
-	penpal: 'How much XP has your pen pal earned?',
-	addfriend: 'Add your match as a friend',
-	matchheader: 'Your current Match'
-      		});
+	      email : 'Contact : ' + matchUser.email,
+	      groupx : currentUser.groupx,
+	      ismatched : true,
+	      penpal: 'How much XP has your pen pal earned?',
+	      addfriend: 'Add your match as a friend',
+	      matchheader: 'Your current Match'
+      });
 }
 
 	
@@ -77,12 +75,8 @@ class MatchCard extends Component {
 
    
   render() {
-
-
     const { loading, language, email,username, ismatched, penpal, addfriend, matchheader} = this.state;
-let isInvalid =
-ismatched === false 
-       ;
+    let isInvalid = ismatched === false;
 
     return (
       <div class="mt-3 w-90 mx-auto"> 
@@ -97,16 +91,16 @@ ismatched === false
                       <Card.Title>{username}</Card.Title>
                       <Card.Text>
                         {language} <br />
-<br/>
+                        <br/>
                          {email} <br />
 
-<br/>
+                          <br/>
                         <input disabled={isInvalid} type="checkbox" className="" id="customRange1" value="Add as friend" /> <strong>{addfriend}</strong> <br /> <br />
 
                         {penpal} <br />
 
-                   {this.state.xp}  
-</Card.Text>
+                        {this.state.xp}  
+                      </Card.Text>
  
 
 <input  disabled={isInvalid} type="range" className="custom-range" id="customRange1" value={this.state.xp} onChange={this.handleSliderChange} />
