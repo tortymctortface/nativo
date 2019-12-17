@@ -80,7 +80,14 @@ class WordOfTheDayCard extends Component {
           word: "Unkaputtbar",
           desc: "It basically means 'unbreakable' or 'indestuctible' and is a very new addition to the German language.",
           pronounce: "Pronounce it like this: un‧ka‧putt‧bar"
+        },
+ 	french: {
+          word: "Anodin",
+          desc: "This word means 'Harmless'",
+          pronounce: "Pronounce it like this: anodi-ne"
         }
+
+
       };
 
       let images = {

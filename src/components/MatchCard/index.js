@@ -28,11 +28,42 @@ class MatchCard extends Component {
       }));
       const currentUID = this.props.authUser.uid;
       let currentUser = usersList.find(user => user.uid === currentUID);
+	//const matchnx = matchUser.nativelang;
+	const currentlx = currentUser.learnlang;
+	//const matchmatched = matchUser.ismatched;
+	const cx = currentUser.groupx;
+	//const mx = matchUser.groupx;
+      let matchUser = usersList.find(user=>user.uid !== currentUID && user.groupx === cx && user.ismatched === false && user.nativelang === currentlx);
+	if (matchUser == null){
+
       this.setState({
+	username: 'We are still searching for you perfect match',
         loading: false,
-        language: currentUser.learnlang,
-        email: "sample@email.com"
-      });
+        language: 'We are looking for someone who is a native ' + currentUser.learnlang + ' speaker for you.',
+	email : 'Please check back soon, we have new members every hour',
+	ismatched :false,
+	penpal: '',
+	addfriend: 'You will soon be able to add some friends here',
+	matchheader: 'Your perfect match is coming soon..'
+	
+      		});
+}
+	else{
+
+      this.setState({
+	username: matchUser.username,
+        loading: false,
+        language: 'Native in : ' + currentUser.learnlang,
+	email : 'Contact : ' + matchUser.email,
+	groupx : currentUser.groupx,
+	ismatched : true,
+	penpal: 'How much XP has your pen pal earned?',
+	addfriend: 'Add your match as a friend',
+	matchheader: 'Your current Match'
+      		});
+}
+
+	
     });
   }
 
@@ -44,34 +75,44 @@ class MatchCard extends Component {
     this.setState({xp: event.target.value});
   }
 
+   
   render() {
-    const { loading, language, email } = this.state;
+
+
+    const { loading, language, email,username, ismatched, penpal, addfriend, matchheader} = this.state;
+let isInvalid =
+ismatched === false 
+       ;
 
     return (
       <div class="mt-3 w-90 mx-auto"> 
         <Card style={{width: '25rem', margin: 'auto'}}>
-          <Card.Header as="h5">Current Match</Card.Header>
+          <Card.Header as="h5">{matchheader}</Card.Header>
           <Card.Body>
             <div class="mb-3">
               <img class="d-inline-block float-left" src={user_img} width="50px"/>
               <div class="d-inline-block ml-3">
                 {loading ? <Card.Text>Loading...</Card.Text>
                   : <div>
-                      <Card.Title>Frank365</Card.Title>
+                      <Card.Title>{username}</Card.Title>
                       <Card.Text>
-                        Native Language: {language} <br />
-                        Contact: {email} <br />
-                        <input type="checkbox" className="" id="customRange1" value="Add as friend" /> <strong>Add as friend</strong> <br /> <br />
+                        {language} <br />
+<br/>
+                         {email} <br />
 
-                        How much XP has your pen pal earned? <br />
-                        {this.state.xp}
-                      </Card.Text>
+<br/>
+                        <input disabled={isInvalid} type="checkbox" className="" id="customRange1" value="Add as friend" /> <strong>{addfriend}</strong> <br /> <br />
 
-                      <input type="range" className="custom-range" id="customRange1" value={this.state.xp} onChange={this.handleSliderChange} />
+                        {penpal} <br />
 
-                      <br />
+                   {this.state.xp}  
+</Card.Text>
+ 
 
-                      <Button variant="warning" value="Contact" block href={"mailto:" + email}>Contact</Button>
+<input  disabled={isInvalid} type="range" className="custom-range" id="customRange1" value={this.state.xp} onChange={this.handleSliderChange} />
+                     <br />
+
+                      <Button disabled={isInvalid} variant="warning" value="Contact" block href={"mailto:" + email}>Contact</Button>
                     </div>
                 }
               </div>
