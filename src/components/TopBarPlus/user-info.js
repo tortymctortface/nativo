@@ -25,7 +25,8 @@ class UserInfo extends Component {
         loading: false,
         users: [],
         this_username: "",
-        language: ""
+        language: "",
+        xp: 10
       };
     }
     componentDidMount() {
@@ -42,7 +43,8 @@ class UserInfo extends Component {
           users: usersList,
           loading: false,
           this_username: currentUser.username,
-          language: currentUser.learnlang
+          language: currentUser.learnlang,
+          xp: currentUser.xp
         });
       });
     }
@@ -55,7 +57,7 @@ class UserInfo extends Component {
     }
   
     render() {
-        const { this_username } = this.state;
+        const { this_username, xp } = this.state;
         let language = this.state.language.toLowerCase();
         let images = {
           irish: irish_icon,
@@ -75,7 +77,7 @@ class UserInfo extends Component {
           </div>
           <div class="d-inline-block float-right mt-3 mr-5">
             {language !== "" && <img src={images[language]} width="50px" class="ml-2 mr-4" alt="flag icon"/>}
-            59
+            {xp}
             <img src={xp_icon} width="40px" class="ml-2 mr-4" alt="xp icon"/>
             Hi, {this_username != "" && this_username}
             <Link to={{pathname: '/account'}}>

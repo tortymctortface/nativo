@@ -39,7 +39,7 @@ const HomePage = () => (
         </div>
 
         <div>
-          <XPProgressCard />
+          <XPProgressCard authUser={authUser} />
         </div>
       </div>
     )}

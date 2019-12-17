@@ -14,7 +14,8 @@ class MatchCard extends Component {
       loading: false,
       language: "",
       email: "",
-      xp: 0
+      currentXP: 0,
+      giftXP: 0
     };
   }
 
@@ -26,16 +27,19 @@ class MatchCard extends Component {
         ...usersObject[key],
         uid: key,
       }));
-      const currentUID = this.props.authUser.uid;
-      let currentUser = usersList.find(user => user.uid === currentUID);
+  const currentUID = this.props.authUser.uid;
+  let currentUser = usersList.find(user => user.uid === currentUID);
 	//const matchnx = matchUser.nativelang;
 	const currentlx = currentUser.learnlang;
 	//const matchmatched = matchUser.ismatched;
-	const cx = currentUser.groupx;
+  const cx = currentUser.groupx;
 	//const mx = matchUser.groupx;
-      let matchUser = usersList.find(user=>user.uid !== currentUID && user.groupx === cx && user.ismatched === false && user.nativelang === currentlx);
-	if (matchUser == null){
-
+  let matchUser = usersList.find(user=>user.uid !== currentUID
+                                  && user.groupx === cx
+                                  && user.ismatched === false
+                                  && user.nativelang === currentlx);
+                                  
+	if (matchUser == null) {
       this.setState({
 	      username: 'We are still searching for you perfect match',
         loading: false,
@@ -44,10 +48,11 @@ class MatchCard extends Component {
 	      ismatched :false,
 	      penpal: '',
 	      addfriend: 'You will soon be able to add some friends here',
-	      matchheader: 'Your perfect match is coming soon..'
+        matchheader: 'Your perfect match is coming soon..',
+        currentXP: currentUser.xp
       });
-}
-	else{
+  }
+	else {
       this.setState({
 	      username: matchUser.username,
         loading: false,
@@ -57,20 +62,29 @@ class MatchCard extends Component {
 	      ismatched : true,
 	      penpal: 'How much XP has your pen pal earned?',
 	      addfriend: 'Add your match as a friend',
-	      matchheader: 'Your current Match'
+        matchheader: 'Your current Match',
+        currentXP: currentUser.xp,
+        matchUID: matchUser.uid,
+        matchCurrentXP: matchUser.xp
       });
+    }
+  });
 }
-
-	
-    });
-  }
 
   componentWillUnmount() {
     this.props.firebase.users().off();
   }
 
   handleSliderChange = (event) => {
-    this.setState({xp: event.target.value});
+    this.setState({giftXP: event.target.value});
+  }
+
+  handleXPSubmit = () => {
+    let matchUID = this.state.matchUID;
+    let newXP = parseInt(this.state.matchCurrentXP)+ parseInt(this.state.giftXP);
+    this.props.firebase
+          .user(matchUID)
+          .update({xp: newXP})
   }
 
    
@@ -99,12 +113,15 @@ class MatchCard extends Component {
 
                         {penpal} <br />
 
-                        {this.state.xp}  
+                        {this.state.giftXP}  
                       </Card.Text>
- 
 
-<input  disabled={isInvalid} type="range" className="custom-range" id="customRange1" value={this.state.xp} onChange={this.handleSliderChange} />
-                     <br />
+                      <input  disabled={isInvalid} type="range" className="custom-range" id="customRange1" value={this.state.giftXP} onChange={this.handleSliderChange} />
+                      <div className="text-center">
+                        <Button disabled={isInvalid} variant="outline-warning" size="sm" value="Submit" className="mx-auto" onClick={this.handleXPSubmit}>Submit</Button>
+                      </div>
+
+                      <br />
 
                       <Button disabled={isInvalid} variant="warning" value="Contact" block href={"mailto:" + email}>Contact</Button>
                     </div>

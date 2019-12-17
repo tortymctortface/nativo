@@ -30,6 +30,7 @@ const INITIAL_STATE = {
   learnlang: '',
   agecheck: false,
   ismatched: false,
+  xp: 10,
   nx: '', 	//number assigned for native language chosen(to be used in matching algorithm)
   lx: '',//number assigned for learning language chosen(to be used in matching algorithm)
   arrayx: '', // nx+lx = arrayx
@@ -50,9 +51,8 @@ var data = {
   lx: '',
   nx:'',
   groupx: '',
-  ismatched: false
-
-
+  ismatched: false,
+  xp: 10
 }
 
 
@@ -65,7 +65,7 @@ class SignUpFormBase extends Component {
   }
   onSubmit = event => {
 
-    const { username, email, passwordOne, nativelang, learnlang, agecheck, ismatched} = this.state;
+    const { username, email, passwordOne, nativelang, learnlang, agecheck, ismatched, xp} = this.state;
 //assigning lx a value
 if (learnlang == "Arabic")
 {
@@ -148,16 +148,16 @@ groupx = lxx + nxx;
 	return this.props.firebase
           .user(authUser.user.uid)
           .set({
-          username,
-          email,
- 	        nativelang,
-	        learnlang,
-	        agecheck,
-		nx,
-		lx,
-		groupx,
-	ismatched
-
+            username,
+            email,
+            nativelang,
+            learnlang,
+            agecheck,
+            nx,
+            lx,
+            groupx,
+            ismatched,
+            xp
           });
       })
 	.then(() => {
