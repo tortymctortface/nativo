@@ -16,7 +16,8 @@ class LanguageCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      language: ""
+      language: "",
+      xp: 0
     };
   }
   componentDidMount() {
@@ -30,7 +31,8 @@ class LanguageCard extends Component {
       const currentUID = this.props.authUser.uid;
       let currentUser = usersList.find(user => user.uid === currentUID);
       this.setState({
-        language: currentUser.learnlang
+        language: currentUser.learnlang,
+        xp: currentUser.xp
       });
     });
   }
@@ -58,7 +60,7 @@ class LanguageCard extends Component {
             <div class="d-inline-block mr-5 ml-3">
               <Card.Title>{this.state.language}</Card.Title>
               <Card.Text>
-                Total XP: 59
+                Total XP: {this.state.xp}
               </Card.Text>
             </div>
           </Card.Body>
